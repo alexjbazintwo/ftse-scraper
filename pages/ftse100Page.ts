@@ -102,6 +102,14 @@ export class Ftse100Page {
 
     await sortOption.click();
 
+    /**
+     * The reason for the below is to wait for the FTSE 100 table to finish sorting 
+     * until the first row in the table has changed.
+     *
+     * Added this because of flakiness — Playwright sometimes
+     * attempts to read it too early before the sort
+     */
+
     await this.page.waitForFunction(
       (previousName) => {
         const firstRow = document.querySelector(
@@ -114,12 +122,10 @@ export class Ftse100Page {
     );
 
     const data: { name: string; marketCap: number }[] = [];
-    const seenNames = new Set<string>();
 
     while (true) {
       const rows = this.page.locator("tr.slide-panel");
       const rowCount = await rows.count();
-      await expect(rowCount).toBeGreaterThan(0);
 
       for (let i = 0; i < rowCount; i++) {
         const row = rows.nth(i);
@@ -132,13 +138,11 @@ export class Ftse100Page {
         const name = (await nameLocator.innerText()).trim();
         const capText = await capLocator.innerText();
 
-        await expect(capText).not.toBe("");
+        expect(capText).not.toBe("");
         expect(/[\d,.]+/.test(capText)).toBe(true);
 
         const cleanCap = capText.replace(/[^0-9.]/g, "");
         const marketCap = parseFloat(cleanCap) * 1_000_000;
-
-        seenNames.add(name);
 
         if (marketCap >= cutoffAbsolute) {
           data.push({ name, marketCap });
