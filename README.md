@@ -16,7 +16,6 @@ Furthermore it includes assertions and is dynamic (changing depending on the rea
 
 ### 1. Top 10 by **Highest % Change**
 
-Dynamically:
 - Sorts by `% Change` > `Highest – lowest` (table already sorted on arriving to page so no sorting required)
 - Extracts the top 10 visible rows
 - Logs data to the console
@@ -25,7 +24,6 @@ Dynamically:
 
 ### 2. Top 10 by **Lowest % Change**
 
-Dynamically:
 - Sorts by `Change %` > `Lowest – highest`
 - Extracts the top 10 visible rows
 - Logs data to the console
@@ -34,7 +32,6 @@ Dynamically:
 
 ### 3. All **Market Cap > £7 million**
 
-Dynamically:
 - Sorts by **Market Cap (Highest – lowest)**
 - Pages through the table extracting all company names and market cap data
 - Stops once market cap drops below £7M
@@ -49,7 +46,7 @@ Dynamically:
 - Extracts historical monthly index values
 - Aggregates data by month
 - Finds the **month and year with lowest average**
-- Logs result to console and JSON
+- Logs result to console
 
 Note: saveData directory has been added to gitignore and will only be created when you run the tests
 
@@ -84,16 +81,7 @@ Without scripts:
 npx playwright test --project=chromium (will run in CI mode in your terminal)
 npx playwright test --project=chromium --debug (will run in debug mode to step through each part of the test)
 
-The above will run all tests in the londonStockExchange.spec.ts file. If you would like to run only one file, you can add .only on any test. E.g.:
-
-```
-test.only("Latest top 10 constituents with the highest percentage change", async () => {
-    await ftse100Page.saveConstituentsSortedByChange(
-      "Highest",
-      "top-10-constituents-highest-percentage-change.json"
-    );
-  });
-```
+The above will run all tests in the londonStockExchange.spec.ts file. If you would like to run only one file, you can add .only on any test
 
 
 
