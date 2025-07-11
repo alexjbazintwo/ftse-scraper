@@ -1,4 +1,4 @@
-# 🎯 FTSE 100 Web Scraping Automation (SDET Technical Test)
+# 🎯 FTSE 100 SDET Technical Test
 
 This project is a Playwright + TypeScript automation suite using data from the [London Stock Exchange](https://www.londonstockexchange.com/).
 
