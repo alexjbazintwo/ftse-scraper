@@ -57,7 +57,7 @@ Dynamically:
 
 ### 1. Clone the repository
 
-git clone https://github.com/<your-username>/ftse-scraper.git
+git clone [https://github.com/alexjbazintwo/ftse-scraper]
 cd ftse-scraper
 
 
