@@ -51,6 +51,8 @@ Dynamically:
 - Finds the **month and year with lowest average**
 - Logs result to console and JSON
 
+Note: saveData directory has been added to gitignore and will only be created when you run the tests
+
 ---
 
 ## 🔧 Setup & Running
