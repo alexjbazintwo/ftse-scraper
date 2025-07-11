@@ -1,6 +1,4 @@
 import { Page, expect } from "@playwright/test";
-import { promises as fs } from "fs";
-import path from "path";
 
 export class Ftse100IndicesPage {
   constructor(private page: Page) {}

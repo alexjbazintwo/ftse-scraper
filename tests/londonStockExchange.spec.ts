@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 import { HomePage } from "../pages/homePage";
 import { Ftse100Page, Ftse100IndicesPage } from "../pages";
 
@@ -7,7 +7,7 @@ test.describe("FTSE 100 Analysis", () => {
   let ftse100Page: Ftse100Page;
   let ftse100IndicesPage: Ftse100IndicesPage;
 
-  test.beforeEach(async ({ page }, testInfo) => {
+  test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
     await homePage.navigateToHomePage();
     await homePage.acceptCookies();
